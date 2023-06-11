@@ -11,10 +11,8 @@ echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority: 
 apt update || exit $?
 apt install nginx -y || exit $?
 
-mkdir /data
-mkdir /data/wwwlogs
-mkdir /data/wwwroot
-mkdir /data/wwwroot/default
+mkdir -p /data/wwwlogs
+mkdir -p /data/wwwroot/default
 chown -R www:www /data
 
 rm -fr /etc/nginx/conf.d
