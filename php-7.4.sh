@@ -7,8 +7,12 @@ echo -e "Package: *\nPin: origin packages.sury.org\nPin: release o=nginx\nPin-Pr
 apt update || exit $?
 apt install php7.4-fpm -y || exit $?
 
-sed -E -i 's|;date.timezone =.*|date.timezone = Asia/Shanghai|g' /etc/php/7.4/cli/php.ini
-sed -E -i 's|;date.timezone =.*|date.timezone = Asia/Shanghai|g' /etc/php/7.4/fpm/php.ini
+sed -E -i 's|^;date.timezone =.*|date.timezone = Asia/Shanghai|g' /etc/php/7.4/cli/php.ini
+sed -E -i 's|^;date.timezone =.*|date.timezone = Asia/Shanghai|g' /etc/php/7.4/fpm/php.ini
+sed -E -i 's|^post_max_size = .*|post_max_size = 1024M|' /etc/php/7.4/cli/php.ini
+sed -E -i 's|^post_max_size = .*|post_max_size = 1024M|' /etc/php/7.4/fpm/php.ini
+sed -E -i 's|^upload_max_filesize = .*|upload_max_filesize = 1024M|' /etc/php/7.4/cli/php.ini
+sed -E -i 's|^upload_max_filesize = .*|upload_max_filesize = 1024M|' /etc/php/7.4/fpm/php.ini
 
 cat <<EOF>/etc/php/7.4/fpm/pool.d/www.conf
 [www]
