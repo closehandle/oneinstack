@@ -5,7 +5,7 @@ chown -R mariadb:mariadb /data/mariadb
 
 apt install jq libmimalloc2.0 libncurses5 -y || exit $?
 
-VERSION="11.0"
+VERSION="10.11"
 FILE_NAME=$(curl -fsSL https://downloads.mariadb.org/rest-api/mariadb/$VERSION/ | jq -r 'first(.releases[]).files[] | select(.os == "Linux") | .file_name')
 FILE_NAME_TRIMED=$(echo $FILE_NAME | sed 's|.tar.gz||g')
 DOWNLOAD_URL=$(curl -fsSL https://downloads.mariadb.org/rest-api/mariadb/$VERSION/ | jq -r 'first(.releases[]).files[] | select(.os == "Linux") | .file_download_url')
