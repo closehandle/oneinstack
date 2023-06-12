@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
-if ! id -u www > /dev/null 2>&1; then
-    userdel -fr www > /dev/null 2>&1
-    useradd -MU -s /sbin/nologin www > /dev/null 2>&1
-fi
+[[ ! `id -u www 2>/dev/null` ]] && useradd -MU -s /sbin/nologin www
 
 apt install curl gnupg2 ca-certificates lsb-release debian-archive-keyring -y || exit $?
 curl -fsSL https://nginx.org/keys/nginx_signing.key | gpg --dearmor | tee /usr/share/keyrings/nginx-archive-keyring.gpg > /dev/null

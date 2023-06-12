@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
-if ! id -u www > /dev/null 2>&1; then
-    userdel -fr www > /dev/null 2>&1
-    useradd -MU -s /sbin/nologin www > /dev/null 2>&1
-fi
+[[ ! `id -u www 2>/dev/null` ]] && useradd -MU -s /sbin/nologin www
 
 wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg || exit $?
 echo "deb https://packages.sury.org/php/ `lsb_release -sc` main" > /etc/apt/sources.list.d/php.list
