@@ -56,7 +56,7 @@ user www www;
 worker_processes auto;
 
 error_log /data/wwwlogs/error_nginx.log notice;
-pid /var/run/nginx.pid;
+pid /run/nginx.pid;
 
 events {
     worker_connections 16384;
@@ -147,13 +147,13 @@ Wants=network-online.target
 
 [Service]
 Type=forking
-PIDFile=/var/run/nginx.pid
+PIDFile=/run/nginx.pid
 LimitCORE=infinity
 LimitNPROC=infinity
 LimitNOFILE=infinity
 ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf
-ExecReload=/bin/sh -c "/bin/kill -s HUP \$(/bin/cat /var/run/nginx.pid)"
-ExecStop=/bin/sh -c "/bin/kill -s TERM \$(/bin/cat /var/run/nginx.pid)"
+ExecReload=/bin/sh -c "/bin/kill -s HUP \$(/bin/cat /run/nginx.pid)"
+ExecStop=/bin/sh -c "/bin/kill -s TERM \$(/bin/cat /run/nginx.pid)"
 Restart=always
 RestartSec=3s
 
@@ -169,13 +169,13 @@ Wants=network-online.target
 
 [Service]
 Type=forking
-PIDFile=/var/run/nginx.pid
+PIDFile=/run/nginx.pid
 LimitCORE=infinity
 LimitNPROC=infinity
 LimitNOFILE=infinity
 ExecStart=/usr/sbin/nginx-debug -c /etc/nginx/nginx.conf
-ExecReload=/bin/sh -c "/bin/kill -s HUP \$(/bin/cat /var/run/nginx.pid)"
-ExecStop=/bin/sh -c "/bin/kill -s TERM \$(/bin/cat /var/run/nginx.pid)"
+ExecReload=/bin/sh -c "/bin/kill -s HUP \$(/bin/cat /run/nginx.pid)"
+ExecStop=/bin/sh -c "/bin/kill -s TERM \$(/bin/cat /run/nginx.pid)"
 
 [Install]
 WantedBy=multi-user.target
