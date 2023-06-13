@@ -31,5 +31,19 @@ rm -f /usr/share/keyrings/clickhouse-keyring.gpg*
 rm -fr /var/lib/clickhouse
 rm -fr /var/log/clickhouse-server
 
+apt purge postgresql-15 --autoremove -y
+rm -f /etc/apt/sources.list.d/pgdg.list
+rm -f /etc/apt/trusted.gpg.d/postgresql.gpg
+rm -f /etc/apt/preferences.d/99postgresql
+rm -fr /var/lib/postgresql
+rm -fr /var/log/postgresql
+rm -fr /usr/lib/postgresql
+rm -fr /usr/share/postgresql-common
+rm -fr /usr/share/postgresql
+rm -fr /usr/share/doc/postgresql-client-15
+rm -fr /usr/share/doc/postgresql-client-common
+rm -fr /etc/postgresql-common
+rm -fr /etc/postgresql
+
 apt update
 exit 0
