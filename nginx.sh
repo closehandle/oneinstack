@@ -15,8 +15,7 @@ chown -R www:www /data
 rm -fr /etc/nginx/conf.d
 rm -f  /etc/nginx/*_params
 
-mkdir /etc/nginx/rewrite
-cp -f ./rewrite/cache.conf /etc/nginx/rewrite
+cp -fr rewrite /etc/nginx
 
 mkdir /etc/nginx/ssl && pushd /etc/nginx/ssl
 openssl req -x509 -newkey ec:<(openssl ecparam -name secp384r1) -sha384 -days 3650 -nodes \
