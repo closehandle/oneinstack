@@ -23,10 +23,10 @@ listen.owner = www
 listen.group = www
 
 pm = dynamic
-pm.max_children = 32
-pm.start_servers = 4
-pm.min_spare_servers = 4
-pm.max_spare_servers = 32
+pm.max_children = 8
+pm.start_servers = 8
+pm.min_spare_servers = 8
+pm.max_spare_servers = 8
 pm.max_requests = 128
 EOF
 
