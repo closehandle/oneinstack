@@ -11,8 +11,8 @@ sed -E -i 's|^;date.timezone =.*|date.timezone = Asia/Shanghai|g' /etc/php/7.4/c
 sed -E -i 's|^;date.timezone =.*|date.timezone = Asia/Shanghai|g' /etc/php/7.4/fpm/php.ini
 sed -E -i 's|^post_max_size = .*|post_max_size = 1024M|g' /etc/php/7.4/cli/php.ini
 sed -E -i 's|^post_max_size = .*|post_max_size = 1024M|g' /etc/php/7.4/fpm/php.ini
-sed -E -i 's|^upload_max_filesize = .*|upload_max_filesize = 1024M|' /etc/php/7.4/cli/php.ini
-sed -E -i 's|^upload_max_filesize = .*|upload_max_filesize = 1024M|' /etc/php/7.4/fpm/php.ini
+sed -E -i 's|^upload_max_filesize = .*|upload_max_filesize = 1024M|g' /etc/php/7.4/cli/php.ini
+sed -E -i 's|^upload_max_filesize = .*|upload_max_filesize = 1024M|g' /etc/php/7.4/fpm/php.ini
 sed -E -i 's|^short_open_tag = Off|short_open_tag = On|g' /etc/php/7.4/cli/php.ini
 sed -E -i 's|^short_open_tag = Off|short_open_tag = On|g' /etc/php/7.4/fpm/php.ini
 sed -E -i 's|^expose_php = On|expose_php = Off|g' /etc/php/7.4/cli/php.ini
