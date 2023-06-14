@@ -13,10 +13,12 @@ sed -E -i 's|^post_max_size = .*|post_max_size = 1024M|g' /etc/php/7.4/cli/php.i
 sed -E -i 's|^post_max_size = .*|post_max_size = 1024M|g' /etc/php/7.4/fpm/php.ini
 sed -E -i 's|^upload_max_filesize = .*|upload_max_filesize = 1024M|g' /etc/php/7.4/cli/php.ini
 sed -E -i 's|^upload_max_filesize = .*|upload_max_filesize = 1024M|g' /etc/php/7.4/fpm/php.ini
-sed -E -i 's|^short_open_tag = Off|short_open_tag = On|g' /etc/php/7.4/cli/php.ini
-sed -E -i 's|^short_open_tag = Off|short_open_tag = On|g' /etc/php/7.4/fpm/php.ini
-sed -E -i 's|^expose_php = On|expose_php = Off|g' /etc/php/7.4/cli/php.ini
-sed -E -i 's|^expose_php = On|expose_php = Off|g' /etc/php/7.4/fpm/php.ini
+sed -E -i 's|^max_execution_time = .*|max_execution_time = 30|g' /etc/php/7.4/cli/php.ini
+sed -E -i 's|^max_execution_time = .*|max_execution_time = 30|g' /etc/php/7.4/fpm/php.ini
+sed -E -i 's|^short_open_tag = .*|short_open_tag = On|g' /etc/php/7.4/cli/php.ini
+sed -E -i 's|^short_open_tag = .*|short_open_tag = On|g' /etc/php/7.4/fpm/php.ini
+sed -E -i 's|^expose_php = .*|expose_php = Off|g' /etc/php/7.4/cli/php.ini
+sed -E -i 's|^expose_php = .*|expose_php = Off|g' /etc/php/7.4/fpm/php.ini
 
 cat <<EOF>/etc/php/7.4/fpm/pool.d/www.conf
 [www]
@@ -34,6 +36,7 @@ pm.max_children = 8
 pm.start_servers = 8
 pm.min_spare_servers = 8
 pm.max_spare_servers = 8
+pm.process_idle_timeout = 10
 pm.max_requests = 128
 request_terminate_timeout = 30
 request_slowlog_timeout = 0
