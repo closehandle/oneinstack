@@ -28,6 +28,7 @@ rm -f /etc/apt/sources.list.d/clickhouse.list
 rm -f /etc/apt/preferences.d/99clickhouse
 rm -f /etc/security/limits.d/clickhouse.conf
 rm -f /usr/share/keyrings/clickhouse-keyring.gpg*
+rm -fr /etc/clickhouse-server
 rm -fr /var/lib/clickhouse
 rm -fr /var/log/clickhouse-server
 
