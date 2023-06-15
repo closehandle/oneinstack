@@ -116,8 +116,6 @@ http {
         ssl_session_cache shared:SSL:10m;
         ssl_session_tickets on;
         ssl_session_timeout 2h;
-        ssl_stapling on;
-        ssl_stapling_verify on;
         server_name _;
         access_log /data/wwwlogs/access_nginx.log customized;
         root /data/wwwroot/default;
