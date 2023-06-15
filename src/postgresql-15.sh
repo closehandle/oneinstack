@@ -6,5 +6,5 @@ curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o
 echo -e "Package: *\nPin: origin www.postgresql.org\nPin: release o=postgresql\nPin-Priority: 900" > /etc/apt/preferences.d/99postgresql
 
 apt update || exit $?
-apt install postgresql-15 -y || exit $?
+apt install postgresql-15 postgresql-client-15 -y || exit $?
 exit 0
