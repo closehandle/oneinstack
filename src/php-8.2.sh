@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+cd $(dirname "$0")
 [[ ! `id -u www 2>/dev/null` ]] && useradd -MU -s /sbin/nologin www
 
 wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg || exit $?

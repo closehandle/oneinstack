@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
+cd $(dirname "$0")
 [[ ! `id -u mariadb 2>/dev/null` ]] && useradd -MU -s /sbin/nologin mariadb
-mkdir -p /data/mariadb
-chown -R mariadb:mariadb /data/mariadb
 
 apt install jq libmimalloc2.0 libncurses5 -y || exit $?
 
@@ -18,6 +17,8 @@ chown -R root:root mariadb
 popd
 
 pushd /usr/local/mariadb
+mkdir -p /data/mariadb
+chown -R mariadb:mariadb /data/mariadb
 ./scripts/mariadb-install-db --user=mariadb --basedir=/usr/local/mariadb --datadir=/data/mariadb || exit $?
 popd
 

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+cd $(dirname "$0")
 apt install gnupg2 -y || exit $?
 
 echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list

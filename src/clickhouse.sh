@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+cd $(dirname "$0")
+
 apt update || exit $?
 apt install apt-transport-https ca-certificates dirmngr -y || exit $?
 

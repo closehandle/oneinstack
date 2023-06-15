@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+cd $(dirname "$0")
 [[ ! `id -u www 2>/dev/null` ]] && useradd -MU -s /sbin/nologin www
 
 apt install curl gnupg2 ca-certificates lsb-release debian-archive-keyring -y || exit $?
@@ -15,8 +16,8 @@ chown -R www:www /data
 rm -fr /etc/nginx/conf.d
 rm -f  /etc/nginx/*_params
 
-cp -fr data/rewrite /etc/nginx
-cp -fr data/ssl     /etc/nginx
+cp -fr ../data/rewrite /etc/nginx
+cp -fr ../data/ssl     /etc/nginx
 
 mkdir /etc/nginx/ssl && pushd /etc/nginx/ssl
 openssl req -x509 -newkey ec:<(openssl ecparam -name secp384r1) -sha384 -days 3650 -nodes \

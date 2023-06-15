@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+cd $(dirname "$0")
+
 apt update || exit $?
 DEBIAN_FRONTEND=noninteractive apt install netfilter-persistent iptables-persistent ipset-persistent -y || exit $?
 
