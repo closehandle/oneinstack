@@ -24,7 +24,7 @@ popd
 
 cat > /etc/my.cnf << EOF
 [client]
-host = 127.0.0.1
+socket = /tmp/mariadb.sock
 port = 3306
 default-character-set = utf8mb4
 
@@ -32,6 +32,7 @@ default-character-set = utf8mb4
 server-id = 1
 basedir = /usr/local/mariadb
 datadir = /data/mariadb
+socket = /tmp/mariadb.sock
 bind-address = 0.0.0.0
 port = 3306
 
