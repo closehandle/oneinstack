@@ -24,6 +24,7 @@ popd
 
 cat > /etc/my.cnf << EOF
 [client]
+host = 127.0.0.1
 port = 3306
 default-character-set = utf8mb4
 
