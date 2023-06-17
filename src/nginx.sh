@@ -19,7 +19,7 @@ rm -f  /etc/nginx/*_params
 cp -fr ../data/rewrite /etc/nginx
 cp -fr ../data/ssl     /etc/nginx
 
-mkdir /etc/nginx/ssl && pushd /etc/nginx/ssl
+pushd /etc/nginx/ssl
 openssl req -x509 -newkey ec:<(openssl ecparam -name secp384r1) -sha384 -days 3650 -nodes \
     -keyout default.key -out default.crt -subj "/CN=`curl -4fsSL ip.sb`" \
     -addext "subjectAltName=IP:`curl -4fsSL ip.sb`"
