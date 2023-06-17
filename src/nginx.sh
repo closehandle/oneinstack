@@ -99,7 +99,7 @@ http {
     open_file_cache_min_uses 2;
     open_file_cache_valid 30s;
 
-    log_format customized '[$time_local] $request_time - $remote_addr - "$request" $status $body_bytes_sent';
+    log_format customized '[\$time_local] \$request_time - \$remote_addr - "\$request" \$status \$body_bytes_sent';
 
     server {
         listen 80 fastopen=1;
