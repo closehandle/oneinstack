@@ -2,7 +2,7 @@
 cd $(dirname "$0")
 [[ ! `id -u mariadb 2>/dev/null` ]] && useradd -MU -s /sbin/nologin mariadb
 
-apt install jq libmimalloc2.0 libncurses5 -y || exit $?
+apt install jq libncurses5 -y || exit $?
 
 VERSION="10.11"
 FILE_NAME=$(curl -fsSL https://downloads.mariadb.org/rest-api/mariadb/$VERSION/ | jq -r 'first(.releases[]).files[] | select(.os == "Linux") | .file_name')
@@ -121,7 +121,6 @@ LimitCORE=infinity
 LimitNPROC=infinity
 LimitNOFILE=infinity
 CapabilityBoundingSet=CAP_IPC_LOCK CAP_DAC_OVERRIDE CAP_AUDIT_WRITE
-Environment="LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libmimalloc.so.2.0"
 ExecStart=/usr/local/mariadb/bin/mariadbd --defaults-file=/etc/my.cnf --basedir=/usr/local/mariadb --datadir=/data/mariadb
 Restart=on-abort
 RestartSec=3s
