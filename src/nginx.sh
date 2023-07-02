@@ -19,6 +19,8 @@ rm -f  /etc/nginx/*_params
 cp -fr ../data/rewrite /etc/nginx
 cp -fr ../data/ssl     /etc/nginx
 
+openssl dhparam -out /etc/nginx/dhe4096.txt 4096
+
 pushd /etc/nginx/ssl
 openssl req -x509 -newkey ec:<(openssl ecparam -name secp384r1) -sha384 -days 3650 -nodes \
     -keyout default.key -out default.crt -subj "/CN=`curl -4fsSL ip.sb`" \
@@ -106,13 +108,15 @@ http {
         listen [::]:80 fastopen=1;
         listen 443 ssl http2 fastopen=1;
         listen [::]:443 ssl http2 fastopen=1;
-        ssl_buffer_size 4k;
         ssl_certificate /etc/nginx/ssl/default.crt;
         ssl_certificate_key /etc/nginx/ssl/default.key;
+        ssl_ciphers ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256;
         ssl_conf_command Options KTLS;
+        ssl_dhparam /etc/nginx/dhe4096.txt;
         ssl_early_data on;
-        ssl_prefer_server_ciphers off;
-        ssl_protocols TLSv1.3;
+        ssl_handshake_timeout 10s;
+        ssl_prefer_server_ciphers on;
+        ssl_protocols TLSv1.2 TLSv1.3;
         ssl_session_cache shared:SSL:10m;
         ssl_session_tickets on;
         ssl_session_timeout 2h;
