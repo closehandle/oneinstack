@@ -19,7 +19,7 @@ rm -f  /etc/nginx/*_params
 cp -fr ../data/rewrite /etc/nginx
 cp -fr ../data/ssl     /etc/nginx
 
-openssl dhparam -out /etc/nginx/dhe4096.txt 4096
+openssl dhparam -out /etc/nginx/ffdhe2048.txt 2048
 
 pushd /etc/nginx/ssl
 openssl req -x509 -newkey ec:<(openssl ecparam -name secp384r1) -sha384 -days 3650 -nodes \
@@ -112,7 +112,7 @@ http {
         ssl_certificate_key /etc/nginx/ssl/default.key;
         ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-CHACHA20-POLY1305;
         ssl_conf_command Options KTLS;
-        ssl_dhparam /etc/nginx/dhe4096.txt;
+        ssl_dhparam /etc/nginx/ffdhe2048.txt;
         ssl_early_data on;
         ssl_prefer_server_ciphers off;
         ssl_protocols TLSv1.2 TLSv1.3;
