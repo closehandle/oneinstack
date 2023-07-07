@@ -187,7 +187,41 @@ ExecStop=/bin/sh -c "/bin/kill -s TERM \$(/bin/cat /run/nginx.pid)"
 WantedBy=multi-user.target
 EOF
 
+cat <<EOF>/etc/logrotate.d/nginx
+/var/log/nginx/*.log {
+    daily
+    missingok
+    rotate 52
+    compress
+    delaycompress
+    notifempty
+    create 640 nginx adm
+    sharedscripts
+    postrotate
+        if [ -f /var/run/nginx.pid ]; then
+            kill -USR1 `cat /var/run/nginx.pid`
+        fi
+    endscript
+}
+
+/data/wwwlogs/*nginx.log {
+    daily
+    rotate 5
+    missingok
+    dateext
+    compress
+    notifempty
+    sharedscripts
+    postrotate
+        if [ -f /var/run/nginx.pid ]; then
+            kill -USR1 `cat /var/run/nginx.pid`
+        fi
+    endscript
+}
+EOF
+
 systemctl daemon-reload
 systemctl enable nginx
 systemctl restart nginx
+systemctl restart logrotate
 exit 0
