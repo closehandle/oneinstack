@@ -3,6 +3,7 @@ cd $(dirname "$0")
 docker pull clickhouse/clickhouse-server:latest || exit $?
 
 docker container run \
+    --env TZ=Asia/Shanghai \
     --name clickhouse \
     --detach \
     --volume clickhouse:/var/lib/clickhouse \
