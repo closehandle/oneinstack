@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 cd $(dirname "$0")
-docker pull php:8.2-fpm-alpine || exit $?
-docker build -t php:8.2-fpm-alpine-customized . || exit $?
+docker image pull php:8.2-fpm-alpine || exit $?
+docker buildx build -t php:8.2-fpm-alpine-customized . || exit $?
 
 docker container run \
     --env TZ=Asia/Shanghai \

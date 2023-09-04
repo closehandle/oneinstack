@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd $(dirname "$0")
-docker pull clickhouse/clickhouse-server:latest || exit $?
+docker image pull clickhouse/clickhouse-server:latest || exit $?
 
 docker container run \
     --env TZ=Asia/Shanghai \

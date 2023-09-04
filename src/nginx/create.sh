@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd $(dirname "$0")
-docker pull nginx:alpine || exit $?
+docker image pull nginx:alpine || exit $?
 
 docker container run \
     --rm \
