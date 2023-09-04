@@ -2,12 +2,15 @@
 cd $(dirname "$0")
 docker pull nginx:alpine || exit $?
 
-IP=$(curl -4fsSL ip.sb)
-openssl req -x509 -newkey ec:<(openssl ecparam -name secp384r1) -sha384 -days 3650 -nodes \
-    -keyout default.key -out default.crt -subj "/CN=${IP}" \
-    -addext "subjectAltName=IP:${IP}"
-chmod 0644 default.crt default.key
-openssl dhparam -out ffdhe2048.txt 2048
+if [[ ! -f default.crt ]]; then
+    IP=$(curl -4fsSL ip.sb)
+    openssl req -x509 -newkey ec:<(openssl ecparam -name secp384r1) -sha384 -days 3650 -nodes \
+        -keyout default.key -out default.crt -subj "/CN=${IP}" \
+        -addext "subjectAltName=IP:${IP}"
+    openssl dhparam -out ffdhe2048.txt 2048
+
+    chmod 0644 default.crt default.key
+fi
 
 docker build -t nginx:customized . || exit $?
 
