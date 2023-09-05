@@ -3,6 +3,7 @@ cd $(dirname "$0")
 docker image pull mariadb:10.11 || exit $?
 
 docker container run \
+    --ip 192.168.88.254 \
     --env TZ=Asia/Shanghai \
     --env MARIADB_RANDOM_ROOT_PASSWORD=yes \
     --name mariadb \

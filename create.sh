@@ -6,7 +6,7 @@ mkdir -p /etc/docker
 cp -f etc/docker/daemon.json /etc/docker/daemon.json
 systemctl restart docker
 
-docker network create oneinstack || exit $?
+docker network create --subnet 192.168.88.0/24 oneinstack || exit $?
 
 mkdir -p /data/wwwlogs
 mkdir -p /data/wwwroot/default

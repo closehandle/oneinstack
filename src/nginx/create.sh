@@ -33,6 +33,7 @@ rm -fr /etc/nginx/modules
 rm -f  /etc/nginx/*_params
 
 docker container run \
+    --ip 192.168.88.100 \
     --env TZ=Asia/Shanghai \
     --name nginx \
     --detach \
