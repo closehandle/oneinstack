@@ -13,6 +13,7 @@ RUN install-php-extensions imagick-stable
 RUN install-php-extensions imap-stable
 RUN install-php-extensions intl-stable
 RUN install-php-extensions ldap-stable
+RUN install-php-extensions mysqli-stable
 RUN install-php-extensions opcache-stable
 RUN install-php-extensions pcntl-stable
 RUN install-php-extensions pdo_mysql-stable
