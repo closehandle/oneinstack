@@ -2,25 +2,26 @@ FROM php:8.2-fpm-alpine
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 RUN chmod +x /usr/local/bin/install-php-extensions
-RUN install-php-extensions apcu-stable
-RUN install-php-extensions bcmath-stable
-RUN install-php-extensions bz2-stable
-RUN install-php-extensions exif-stable
-RUN install-php-extensions gd-stable
-RUN install-php-extensions gmp-stable
-RUN install-php-extensions igbinary-stable
-RUN install-php-extensions imagick-stable
-RUN install-php-extensions imap-stable
-RUN install-php-extensions intl-stable
-RUN install-php-extensions ldap-stable
-RUN install-php-extensions mysqli-stable
-RUN install-php-extensions opcache-stable
-RUN install-php-extensions pcntl-stable
-RUN install-php-extensions pdo_mysql-stable
-RUN install-php-extensions redis-stable
-RUN install-php-extensions sockets-stable
-RUN install-php-extensions ssh2-stable
-RUN install-php-extensions zip-stable
+RUN install-php-extensions \
+    apcu-stable \
+    bcmath-stable \
+    bz2-stable \
+    exif-stable \
+    gd-stable \
+    gmp-stable \
+    igbinary-stable \
+    imagick-stable \
+    imap-stable \
+    intl-stable \
+    ldap-stable \
+    mysqli-stable \
+    opcache-stable \
+    pcntl-stable \
+    pdo_mysql-stable \
+    redis-stable \
+    sockets-stable \
+    ssh2-stable \
+    zip-stable
 
 ADD docker.conf /usr/local/etc/php-fpm.d/docker.conf
 ADD www.conf    /usr/local/etc/php-fpm.d/www.conf
