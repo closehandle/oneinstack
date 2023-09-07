@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 cd $(dirname "$0")
-docker image pull php:8.2-fpm-alpine || exit $?
-docker buildx build -t php:8.2-fpm-alpine-customized . || exit $?
+docker image pull closehandle/php:8.2-fpm-alpine || exit $?
 
 docker container run \
     --ip 192.168.88.101 \
@@ -12,6 +11,6 @@ docker container run \
     --network oneinstack \
     --restart always \
     --hostname php-fpm \
-    php:8.2-fpm-alpine-customized \
+    closehandle/php:8.2-fpm-alpine \
     php-fpm -R
 exit 0
