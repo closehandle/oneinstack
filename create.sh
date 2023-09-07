@@ -2,10 +2,6 @@
 cd $(dirname "$0")
 apt install jq -y || exit $?
 
-mkdir -p /etc/docker
-cp -f etc/docker/daemon.json /etc/docker/daemon.json
-systemctl restart docker
-
 docker network create --subnet 192.168.88.0/24 oneinstack || exit $?
 
 mkdir -p /data/wwwlogs
@@ -33,4 +29,8 @@ echo '[+] The nginx ports are not exposed by default, you need to configure ipta
 echo "[+] iptables -t nat -A PREROUTING -d 1.1.1.1/32 -p tcp -m tcp --dport 80 -j DNAT --to-destination $NGINXIP:80"
 echo "[+] iptables -t nat -A PREROUTING -d 1.1.1.1/32 -p tcp -m tcp --dport 443 -j DNAT --to-destination $NGINXIP:443"
 echo "[+] Replace 1.1.1.1 with your server's IP address"
+
+mkdir -p /etc/docker
+cp -f etc/docker/daemon.json /etc/docker/daemon.json
+systemctl restart docker
 exit 0
