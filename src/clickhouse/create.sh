@@ -3,7 +3,7 @@ cd $(dirname "$0")
 docker image pull clickhouse/clickhouse-server:latest || exit $?
 
 docker container run \
-    --ip 192.168.88.253 \
+    --ip 192.168.88.252 \
     --env TZ=Asia/Shanghai \
     --name clickhouse \
     --detach \

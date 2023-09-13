@@ -3,7 +3,7 @@ cd $(dirname "$0")
 docker image pull mongo:latest || exit $?
 
 docker container run \
-    --ip 192.168.88.252 \
+    --ip 192.168.88.251 \
     --env TZ=Asia/Shanghai \
     --env MONGO_INITDB_ROOT_USERNAME=admin \
     --env MONGO_INITDB_ROOT_PASSWORD=oneinstack \

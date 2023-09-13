@@ -3,7 +3,7 @@ cd $(dirname "$0")
 docker image pull redis:alpine || exit $?
 
 docker container run \
-    --ip 192.168.88.251 \
+    --ip 192.168.88.250 \
     --env TZ=Asia/Shanghai \
     --name redis \
     --detach \
