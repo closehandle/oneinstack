@@ -1,4 +1,4 @@
-```bash
+```
 docker container run \
     --ip 192.168.88.? \
     --env WORDPRESS_DB_HOST=mariadb:3306 \
