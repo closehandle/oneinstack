@@ -7,6 +7,7 @@ docker container run \
     --env MYSQL_DATABASE=? \
     --env NEXTCLOUD_ADMIN_USER=? \
     --env NEXTCLOUD_ADMIN_PASSWORD=? \
+    --env NEXTCLOUD_TRUSTED_DOMAINS=example.com \
     --env REDIS_HOST=192.168.88.250 \
     --name nextcloud \
     --detach \
