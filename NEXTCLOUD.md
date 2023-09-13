@@ -1,6 +1,7 @@
 ```
 docker container run \
     --ip 192.168.88.? \
+    --env TZ=Asia/Shanghai \
     --env MYSQL_HOST=192.168.88.254 \
     --env MYSQL_USER=? \
     --env MYSQL_PASSWORD=? \
