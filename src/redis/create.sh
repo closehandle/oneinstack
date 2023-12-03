@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-cd $(dirname "$0")
-docker image pull redis:alpine || exit $?
+docker container rm -f redis > /dev/null 2>&1
 
 docker container run \
     --ip 192.168.88.250 \
     --env TZ=Asia/Shanghai \
     --name redis \
+    --pull always \
     --detach \
     --network oneinstack \
     --restart always \
     --hostname redis \
     redis:alpine
-exit 0
+exit $?

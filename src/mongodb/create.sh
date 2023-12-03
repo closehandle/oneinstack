@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-cd $(dirname "$0")
-docker image pull mongo:latest || exit $?
+docker container rm -f mongodb > /dev/null 2>&1
 
 docker container run \
     --ip 192.168.88.251 \
@@ -8,10 +7,11 @@ docker container run \
     --env MONGO_INITDB_ROOT_USERNAME=admin \
     --env MONGO_INITDB_ROOT_PASSWORD=oneinstack \
     --name mongodb \
+    --pull always \
     --detach \
     --volume mongodb:/data/db \
     --network oneinstack \
     --restart always \
     --hostname mongodb \
     mongo:latest
-exit 0
+exit $?

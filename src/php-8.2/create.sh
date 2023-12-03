@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-cd $(dirname "$0")
-docker image pull closehandle/php:8.2-fpm-alpine || exit $?
+docker container rm -f php-fpm > /dev/null 2>&1
 
 docker container run \
     --ip 192.168.88.101 \
     --env TZ=Asia/Shanghai \
     --name php-fpm \
+    --pull always \
     --detach \
     --volume /data/wwwroot:/data/wwwroot \
     --network oneinstack \
@@ -13,4 +13,4 @@ docker container run \
     --hostname php-fpm \
     closehandle/php:8.2-fpm-alpine \
     php-fpm -R
-exit 0
+exit $?
