@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 cd $(dirname "$0")
-docker image pull nginx:alpine || exit $?
 
 if [[ ! -d /etc/nginx ]]; then
     docker container run \
@@ -38,6 +37,7 @@ docker container run \
     --ip 192.168.88.100 \
     --env TZ=Asia/Shanghai \
     --name nginx \
+    --pull always \
     --detach \
     --volume /etc/nginx:/etc/nginx \
     --volume /data/wwwlogs:/data/wwwlogs \
@@ -46,4 +46,4 @@ docker container run \
     --restart always \
     --hostname nginx \
     nginx:alpine
-exit 0
+exit $?
