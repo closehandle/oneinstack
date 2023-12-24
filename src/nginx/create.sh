@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 cd $(dirname "$0")
+docker container rm -f nginx > /dev/null 2>&1
 
 if [[ ! -d /etc/nginx ]]; then
     docker container run \
