@@ -1,74 +1,46 @@
 # oneinstack
-LNMP in Docker
-
-```
-docker container run \
-    --ip 192.168.88.? \
-    --env TZ=Asia/Shanghai \
-    --name adguard \
-    --detach \
-    --volume /etc/nginx/ssl:/etc/nginx/ssl \
-    --volume adguard:/opt/adguardhome/conf \
-    --network oneinstack \
-    --restart always \
-    --hostname adguard \
-    adguard/adguardhome:latest
+一键安装指令
+```bash
+./create.sh
 ```
 
+默认的容器地址
 ```
-docker container run \
-    --ip 192.168.88.? \
-    --env TZ=Asia/Shanghai \
-    --env MYSQL_HOST=192.168.88.254 \
-    --env MYSQL_USER=? \
-    --env MYSQL_PASSWORD=? \
-    --env MYSQL_DATABASE=? \
-    --env NEXTCLOUD_ADMIN_USER=? \
-    --env NEXTCLOUD_ADMIN_PASSWORD=? \
-    --env NEXTCLOUD_TRUSTED_DOMAINS=example.com \
-    --env REDIS_HOST=192.168.88.250 \
-    --name nextcloud \
-    --detach \
-    --volume nextcloud:/var/www/html \
-    --network oneinstack \
-    --restart always \
-    --hostname nextcloud \
-    nextcloud
+nginx: 192.168.88.100
+php-fpm: 192.168.88.101
+mariadb: 192.168.88.254
 ```
 
-```
-docker container run \
-    --ip 192.168.88.? \
-    --env TZ=Asia/Shanghai \
-    --env DATABASE_URL='mysql://user:pass@192.168.88.254:3306/dbname' \
-    --env ROCKET_WORKERS=32 \
-    --env ROCKET_ADDRESS=0.0.0.0 \
-    --env ROCKET_PORT=8444 \
-    --env ROCKET_TLS='{certs="/etc/nginx/ssl/default.crt",key="/etc/nginx/ssl/default.key"}' \
-    --env DISABLE_ADMIN_TOKEN=false \
-    --name vaultwarden \
-    --detach \
-    --volume /etc/nginx/ssl:/etc/nginx/ssl \
-    --volume vaultwarden:/data \
-    --network oneinstack \
-    --restart always \
-    --hostname vaultwarden \
-    vaultwarden/server:latest
+创建虚拟主机步骤
+```bash
+cd /etc/nginx
+mkdir vhost
+
+cp -f vhost.conf vhost/example.com.conf
+nano vhost/example.com.conf
 ```
 
+默认的日志存放位置
 ```
-docker container run \
-    --ip 192.168.88.? \
-    --env TZ=Asia/Shanghai \
-    --env WORDPRESS_DB_HOST=192.168.88.254:3306 \
-    --env WORDPRESS_DB_USER=? \
-    --env WORDPRESS_DB_PASSWORD=? \
-    --env WORDPRESS_DB_NAME=? \
-    --name wordpress \
-    --detach \
-    --volume wordpress:/var/www/html \
-    --network oneinstack \
-    --restart always \
-    --hostname wordpress \
-    wordpress
+/data/wwwlogs
+```
+
+默认的网站数据存放位置
+```
+/data/wwwroot
+```
+
+默认没有发布任何端口，如需发布 80 443 这些，你需要关闭 Docker 的 iptables 修改然后自行编写规则
+```bash
+apt update
+apt install netfilter-persistent iptables-persistent ipset-persistent -y
+
+cp -f etc/docker/daemon.json /etc/docker/daemon.json
+cp -f etc/iptables/rules.* /etc/iptables
+
+nano /etc/iptables/rules.v4
+nano /etc/iptables/rules.v6
+
+systemctl restart docker
+netfilter-persistent reload
 ```
