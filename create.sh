@@ -8,7 +8,7 @@ mkdir -p /data/wwwlogs
 mkdir -p /data/wwwroot/default
 
 ./src/mariadb-10.11/create.sh || exit $?
-./src/php-8.2/create.sh || exit $?
+./src/php-8.3/create.sh || exit $?
 ./src/nginx/create.sh || exit $?
 
 clear
