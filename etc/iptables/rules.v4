@@ -15,6 +15,7 @@ COMMIT
 :POSTROUTING ACCEPT [0:0]
 -A PREROUTING -d 1.1.1.1/32 -p tcp -m tcp --dport 80 -j DNAT --to-destination 192.168.88.100:80
 -A PREROUTING -d 1.1.1.1/32 -p tcp -m tcp --dport 443 -j DNAT --to-destination 192.168.88.100:443
+-A PREROUTING -d 1.1.1.1/32 -p udp -m udp --dport 443 -j DNAT --to-destination 192.168.88.100:443
 -A POSTROUTING -o lo -j RETURN
 -A POSTROUTING -o docker0 -j RETURN
 -A POSTROUTING -s 192.168.88.0/24 -j MASQUERADE
