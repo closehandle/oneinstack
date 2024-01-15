@@ -11,6 +11,5 @@ docker container run \
     --network oneinstack \
     --restart always \
     --hostname php-fpm \
-    closehandle/php:8.2-fpm-alpine \
-    php-fpm -R
+    closehandle/php:8.2-fpm-alpine
 exit $?
