@@ -11,8 +11,8 @@ if [[ ! -d /etc/nginx ]]; then
         --volume /etc:/opt \
         --hostname nginx \
         --interactive \
-        nginx:alpine \
-        cp -fr /etc/nginx /opt
+        openresty/openresty:alpine \
+        cp -fr /usr/local/openresty/nginx/conf /opt/nginx
 
     IP=$(curl -4fsSL ip.sb)
     openssl req -x509 -newkey ec:<(openssl ecparam -name secp384r1) -sha384 -days 3650 -nodes \
@@ -47,5 +47,6 @@ docker container run \
     --network oneinstack \
     --restart always \
     --hostname nginx \
-    nginx:alpine
+    openresty/openresty:alpine \
+    openresty -c /etc/nginx/nginx.conf -g 'daemon off;'
 exit $?
