@@ -3,6 +3,9 @@ cd $(dirname "$0")
 docker container rm -f nginx > /dev/null 2>&1
 
 if [[ ! -d /etc/nginx ]]; then
+    apt update || exit $?
+    apt install logrotate -y || exit $?
+
     docker container run \
         --rm \
         --env TZ=Asia/Shanghai \
@@ -34,6 +37,21 @@ if [[ ! -d /etc/nginx ]]; then
     rm -f  /etc/nginx/*_params
     rm -f  /etc/nginx/*.default
 fi
+
+cat > /etc/logrotate.d/nginx << EOF
+/data/wwwlogs/*nginx.log {
+    daily
+    rotate 7
+    dateext
+    compress
+    missingok
+    notifempty
+    sharedscripts
+    postrotate
+        docker container restart nginx
+    endscript
+}
+EOF
 
 docker container run \
     --ip 192.168.88.100 \
