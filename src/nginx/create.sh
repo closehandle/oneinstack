@@ -14,7 +14,7 @@ if [[ ! -d /etc/nginx ]]; then
         --volume /etc:/opt \
         --hostname nginx \
         --interactive \
-        closehandle/nginx:latest \
+        nginx:alpine \
         cp -fr /etc/nginx /opt
 
     IP=$(curl -4fsSL ip.sb)
@@ -65,5 +65,5 @@ docker container run \
     --network oneinstack \
     --restart always \
     --hostname nginx \
-    closehandle/nginx:latest
+    nginx:alpine
 exit $?
