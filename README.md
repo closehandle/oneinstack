@@ -44,3 +44,4 @@ nano /etc/iptables/rules.v6
 systemctl restart docker
 netfilter-persistent reload
 ```
+通常情况下，在上述指令中的 `nano /etc/iptables/rules.v4` 步骤时，将其中的 `1.1.1.1` 修改为你的网卡 IPv4 地址即可
