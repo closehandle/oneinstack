@@ -11,6 +11,5 @@ docker container run \
     --volume mariadb:/var/lib/mysql \
     --network oneinstack \
     --restart always \
-    --hostname mariadb \
     mariadb:10.11
 exit $?

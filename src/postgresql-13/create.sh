@@ -11,6 +11,5 @@ docker container run \
     --volume postgresql:/var/lib/postgresql/data \
     --network oneinstack \
     --restart always \
-    --hostname postgresql \
     postgres:13
 exit $?

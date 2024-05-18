@@ -14,6 +14,5 @@ docker container run \
     --cap-add SYS_NICE \
     --network oneinstack \
     --restart always \
-    --hostname clickhouse \
     clickhouse/clickhouse-server:latest-alpine
 exit $?

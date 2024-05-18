@@ -11,6 +11,5 @@ docker container run \
     --volume mysql:/var/lib/mysql \
     --network oneinstack \
     --restart always \
-    --hostname mysql \
     mysql:5.7
 exit $?

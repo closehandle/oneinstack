@@ -12,7 +12,6 @@ if [[ ! -d /etc/nginx ]]; then
         --tty \
         --name nginx \
         --volume /etc:/opt \
-        --hostname nginx \
         --interactive \
         nginx:alpine \
         cp -fr /etc/nginx /opt
@@ -64,6 +63,5 @@ docker container run \
     --volume /data/wwwroot:/data/wwwroot \
     --network oneinstack \
     --restart always \
-    --hostname nginx \
     nginx:alpine
 exit $?

@@ -12,6 +12,5 @@ docker container run \
     --volume mongodb:/data/db \
     --network oneinstack \
     --restart always \
-    --hostname mongodb \
     mongo:6.0
 exit $?

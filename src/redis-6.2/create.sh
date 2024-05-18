@@ -9,6 +9,5 @@ docker container run \
     --detach \
     --network oneinstack \
     --restart always \
-    --hostname redis \
     redis:6.2-alpine
 exit $?

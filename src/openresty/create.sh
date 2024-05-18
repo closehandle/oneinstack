@@ -12,7 +12,6 @@ if [[ ! -d /etc/nginx ]]; then
         --tty \
         --name nginx \
         --volume /etc:/opt \
-        --hostname nginx \
         --interactive \
         openresty/openresty:alpine \
         cp -fr /usr/local/openresty/nginx/conf /opt/nginx
@@ -64,7 +63,6 @@ docker container run \
     --volume /data/wwwroot:/data/wwwroot \
     --network oneinstack \
     --restart always \
-    --hostname nginx \
     openresty/openresty:alpine \
     openresty -c /etc/nginx/nginx.conf -g 'daemon off;'
 exit $?
