@@ -7,7 +7,7 @@ docker network create --subnet 192.168.88.0/24 oneinstack || exit $?
 mkdir -p /data/wwwlogs
 mkdir -p /data/wwwroot/default
 
-./src/mariadb-10.11/create.sh || exit $?
+./src/mariadb-11.4/create.sh || exit $?
 ./src/php-8.3/create.sh || exit $?
 ./src/nginx/create.sh || exit $?
 
