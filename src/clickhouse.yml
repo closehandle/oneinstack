@@ -1,0 +1,25 @@
+volumes:
+  clickhouse:
+    external: false
+    name: clickhouse
+
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    cap_add:
+      - IPC_LOCK
+      - SYS_NICE
+      - NET_ADMIN
+    restart: always
+    ulimits:
+      nofile:
+        hard: 262144
+        soft: 262144
+    volumes:
+      - clickhouse:/var/lib/clickhouse
+    hostname: clickhouse
+    networks:
+      - oneinstack
+    environment:
+      - TZ=Asia/Shanghai
+    container_name: clickhouse

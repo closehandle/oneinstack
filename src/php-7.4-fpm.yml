@@ -1,0 +1,12 @@
+services:
+  php-7.4-fpm:
+    image: closehandle/php:7.4-fpm
+    restart: always
+    volumes:
+      - /data/wwwroot:/data/wwwroot
+    hostname: php-7.4-fpm
+    networks:
+      - oneinstack
+    environment:
+      - TZ=Asia/Shanghai
+    container_name: php-7.4-fpm

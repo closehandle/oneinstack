@@ -1,0 +1,18 @@
+services:
+  nginx:
+    ports:
+      - 80/tcp
+      - 443/tcp
+      - 443/udp
+    image: nginx:latest
+    restart: always
+    volumes:
+      - /etc/nginx:/etc/nginx
+      - /data/wwwlogs:/data/wwwlogs
+      - /data/wwwroot:/data/wwwroot
+    hostname: nginx
+    networks:
+      - oneinstack
+    environment:
+      - TZ=Asia/Shanghai
+    container_name: nginx

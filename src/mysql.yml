@@ -1,0 +1,18 @@
+volumes:
+  mysql:
+    external: false
+    name: mysql
+
+services:
+  mysql:
+    image: mysql:latest
+    restart: always
+    volumes:
+      - mysql:/var/lib/mysql
+    hostname: mysql
+    networks:
+      - oneinstack
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+    container_name: mysql

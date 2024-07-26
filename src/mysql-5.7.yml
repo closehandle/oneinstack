@@ -1,0 +1,18 @@
+volumes:
+  mysql-5.7:
+    external: false
+    name: mysql-5.7
+
+services:
+  mysql-5.7:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - mysql-5.7:/var/lib/mysql
+    hostname: mysql-5.7
+    networks:
+      - oneinstack
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+    container_name: mysql-5.7

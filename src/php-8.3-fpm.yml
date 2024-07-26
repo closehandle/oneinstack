@@ -1,0 +1,12 @@
+services:
+  php-8.3-fpm:
+    image: closehandle/php:8.3-fpm
+    restart: always
+    volumes:
+      - /data/wwwroot:/data/wwwroot
+    hostname: php-8.3-fpm
+    networks:
+      - oneinstack
+    environment:
+      - TZ=Asia/Shanghai
+    container_name: php-8.3-fpm

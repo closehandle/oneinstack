@@ -1,0 +1,18 @@
+volumes:
+  mariadb:
+    external: false
+    name: mariadb
+
+services:
+  mariadb:
+    image: mariadb:latest
+    restart: always
+    volumes:
+      - mariadb:/var/lib/mysql
+    hostname: mariadb
+    networks:
+      - oneinstack
+    environment:
+      - TZ=Asia/Shanghai
+      - MARIADB_RANDOM_ROOT_PASSWORD=yes
+    container_name: mariadb

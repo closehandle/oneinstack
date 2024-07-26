@@ -1,0 +1,19 @@
+volumes:
+  mongodb-5.0:
+    external: false
+    name: mongodb-5.0
+
+services:
+  mongodb-5.0:
+    image: mongo:5.0
+    restart: always
+    volumes:
+      - mongodb-5.0:/data/db
+    hostname: mongodb-5.0
+    networks:
+      - oneinstack
+    environment:
+      - TZ=Asia/Shanghai
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=oneinstack
+    container_name: mongodb-5.0

@@ -1,0 +1,10 @@
+services:
+  redis:
+    image: redis:latest
+    restart: always
+    hostname: redis
+    networks:
+      - oneinstack
+    environment:
+      - TZ=Asia/Shanghai
+    container_name: redis

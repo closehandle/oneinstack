@@ -1,0 +1,19 @@
+services:
+  nginx:
+    ports:
+      - 80/tcp
+      - 443/tcp
+      - 443/udp
+    image: openresty/openresty:latest
+    restart: always
+    volumes:
+      - /etc/nginx:/etc/nginx
+      - /data/wwwlogs:/data/wwwlogs
+      - /data/wwwroot:/data/wwwroot
+    hostname: nginx
+    networks:
+      - oneinstack
+    command: openresty -c /etc/nginx/nginx.conf -g 'deamon off;'
+    environment:
+      - TZ=Asia/Shanghai
+    container_name: nginx

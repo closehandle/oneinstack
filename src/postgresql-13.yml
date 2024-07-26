@@ -1,0 +1,18 @@
+volumes:
+  postgresql-13:
+    external: false
+    name: postgresql-13
+
+services:
+  postgresql-13:
+    image: postgresql:13
+    restart: always
+    volumes:
+      - postgresql-13:/var/lib/postgresql/data
+    hostname: postgresql-13
+    networks:
+      - oneinstack
+    environment:
+      - TZ=Asia/Shanghai
+      - POSTGRES_PASSWORD=oneinstack
+    container_name: postgresql-13

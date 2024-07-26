@@ -1,0 +1,10 @@
+services:
+  redis-7.0:
+    image: redis:7.0
+    restart: always
+    hostname: redis-7.0
+    networks:
+      - oneinstack
+    environment:
+      - TZ=Asia/Shanghai
+    container_name: redis-7.0

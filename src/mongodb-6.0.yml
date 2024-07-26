@@ -1,0 +1,19 @@
+volumes:
+  mongodb-6.0:
+    external: false
+    name: mongodb-6.0
+
+services:
+  mongodb-6.0:
+    image: mongo:6.0
+    restart: always
+    volumes:
+      - mongodb-6.0:/data/db
+    hostname: mongodb-6.0
+    networks:
+      - oneinstack
+    environment:
+      - TZ=Asia/Shanghai
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=oneinstack
+    container_name: mongodb-6.0
