@@ -1,10 +1,10 @@
 services:
   nginx:
+    image: openresty/openresty:latest
     ports:
       - 80/tcp
       - 443/tcp
       - 443/udp
-    image: openresty/openresty:latest
     restart: always
     volumes:
       - /etc/nginx:/etc/nginx

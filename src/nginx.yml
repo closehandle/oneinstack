@@ -1,10 +1,10 @@
 services:
   nginx:
+    image: nginx:latest
     ports:
       - 80/tcp
       - 443/tcp
       - 443/udp
-    image: nginx:latest
     restart: always
     volumes:
       - /etc/nginx:/etc/nginx
