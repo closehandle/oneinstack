@@ -5,7 +5,7 @@ volumes:
 
 services:
   postgresql-12:
-    image: postgresql:12
+    image: postgres:12
     restart: always
     volumes:
       - postgresql-12:/var/lib/postgresql/data

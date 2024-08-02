@@ -5,7 +5,7 @@ volumes:
 
 services:
   postgresql-15:
-    image: postgresql:15
+    image: postgres:15
     restart: always
     volumes:
       - postgresql-15:/var/lib/postgresql/data

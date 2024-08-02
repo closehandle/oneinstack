@@ -5,7 +5,7 @@ volumes:
 
 services:
   postgresql:
-    image: postgresql:latest
+    image: postgres:latest
     restart: always
     volumes:
       - postgresql:/var/lib/postgresql/data
