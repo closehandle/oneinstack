@@ -53,21 +53,21 @@ function action(r) {
         data.size++;
     }
 
-    let after = 0;
+    let done = false;
     if (data.size > size) {
-        after = Math.ceil((time - (date - data.date)) / 1000);
         data.date = date;
+        done = true;
     }
     list.set(name, JSON.stringify(data));
 
-    if (after != 0) {
+    if (done) {
         return `<html>
 <head>
     <title>429 Too Many Requests</title>
 </head>
 <body>
     <center><h1>429 Too Many Requests</h1></center>
-    <center><h1>You can <b>retry after ${after} seconds</b></h1></center>
+    <center><h1>You can <b>retry after ${Math.ceil(time / 1000)} seconds</b></h1></center>
     <center><h1><b>DO NOT REFRESH</b> at this period, otherwise the timer will reset</h1></center>
     <hr>
     <center>nginx</center>
