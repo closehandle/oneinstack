@@ -68,7 +68,7 @@ function action(r) {
 <body>
     <center><h1>429 Too Many Requests</h1></center>
     <center><h1>You can <b>retry after ${after} seconds</b></h1></center>
-    <center><h1><b>DO NOT REFRESH</b> at this period, otherwise the timer will reset</b></h1></center>
+    <center><h1><b>DO NOT REFRESH</b> at this period, otherwise the timer will reset</h1></center>
     <hr>
     <center>nginx</center>
 </body>
