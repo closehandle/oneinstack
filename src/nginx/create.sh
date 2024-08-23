@@ -23,6 +23,7 @@ if [[ ! -d /etc/nginx ]]; then
     cp -f  ../../etc/nginx/fastcgi.conf /etc/nginx
     cp -f  ../../etc/nginx/vhost.conf   /etc/nginx
     cp -fr ../../etc/nginx/rewrite      /etc/nginx/rewrite
+    cp -fr ../../etc/nginx/njs          /etc/nginx/njs
     cp -fr ../../etc/nginx/ssl          /etc/nginx/ssl
     cp -f  nginx.conf  /etc/nginx
     mv -f  default.crt /etc/nginx/ssl/default.crt
