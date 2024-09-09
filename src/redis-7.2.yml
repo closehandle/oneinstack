@@ -2,9 +2,7 @@ services:
   redis-7.2:
     image: redis:7.2
     restart: always
-    hostname: redis-7.2
-    networks:
-      - oneinstack
     environment:
       - TZ=Asia/Shanghai
+    network_mode: host
     container_name: redis-7.2

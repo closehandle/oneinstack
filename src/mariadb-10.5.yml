@@ -9,10 +9,8 @@ services:
     restart: always
     volumes:
       - mariadb-10.5:/var/lib/mysql
-    hostname: mariadb-10.5
-    networks:
-      - oneinstack
     environment:
       - TZ=Asia/Shanghai
-      - MARIADB_RANDOM_ROOT_PASSWORD=yes
+      - MARIADB_ROOT_PASSWORD=oneinstack
+    network_mode: host
     container_name: mariadb-10.5

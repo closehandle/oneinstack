@@ -9,10 +9,8 @@ services:
     restart: always
     volumes:
       - mysql-8.0:/var/lib/mysql
-    hostname: mysql-8.0
-    networks:
-      - oneinstack
     environment:
       - TZ=Asia/Shanghai
-      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=oneinstack
+    network_mode: host
     container_name: mysql-8.0

@@ -9,10 +9,8 @@ services:
     restart: always
     volumes:
       - postgresql-12:/var/lib/postgresql/data
-    hostname: postgresql-12
-    networks:
-      - oneinstack
     environment:
       - TZ=Asia/Shanghai
       - POSTGRES_PASSWORD=oneinstack
+    network_mode: host
     container_name: postgresql-12

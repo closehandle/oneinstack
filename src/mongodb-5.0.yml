@@ -9,11 +9,9 @@ services:
     restart: always
     volumes:
       - mongodb-5.0:/data/db
-    hostname: mongodb-5.0
-    networks:
-      - oneinstack
     environment:
       - TZ=Asia/Shanghai
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=oneinstack
+    network_mode: host
     container_name: mongodb-5.0

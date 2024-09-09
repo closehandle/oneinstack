@@ -10,10 +10,8 @@ services:
       - /etc/nginx:/etc/nginx
       - /data/wwwlogs:/data/wwwlogs
       - /data/wwwroot:/data/wwwroot
-    hostname: nginx
-    networks:
-      - oneinstack
     command: openresty -c /etc/nginx/nginx.conf -g 'deamon off;'
     environment:
       - TZ=Asia/Shanghai
+    network_mode: host
     container_name: nginx

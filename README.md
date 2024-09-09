@@ -4,6 +4,9 @@
 # 初始化配置文件
 ./src/nginx/create.sh
 
+# 修改数据库密码
+nano docker-compose.yml
+
 # 创建并启动容器
 docker compose up --pull always --detach --force-recreate
 ```

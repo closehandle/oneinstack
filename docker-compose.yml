@@ -6,55 +6,37 @@ volumes:
 services:
   nginx:
     image: nginx:latest
-    ports:
-      - 80:80/tcp
-      - 443:443/tcp
-      - 443:443/udp
     restart: always
     volumes:
       - /etc/nginx:/etc/nginx
       - /data/wwwlogs:/data/wwwlogs
       - /data/wwwroot:/data/wwwroot
-    hostname: nginx
-    networks:
-      - oneinstack
     depends_on:
       - php-8.3-fpm
     environment:
       - TZ=Asia/Shanghai
+    network_mode: host
     container_name: nginx
   php-8.3-fpm:
     image: closehandle/php:8.3-fpm
     restart: always
     volumes:
       - /data/wwwroot:/data/wwwroot
-    hostname: php-8.3-fpm
-    networks:
-      - oneinstack
     depends_on:
       - mariadb-11.4
     environment:
       - TZ=Asia/Shanghai
+      - FPM_BIND=127.0.0.1
+      - FPM_PORT=9000
+    network_mode: host
     container_name: php-8.3-fpm
   mariadb-11.4:
     image: mariadb:11.4
     restart: always
     volumes:
       - mariadb-11.4:/var/lib/mysql
-    hostname: mariadb-11.4
-    networks:
-      - oneinstack
     environment:
       - TZ=Asia/Shanghai
       - MARIADB_RANDOM_ROOT_PASSWORD=yes
+    network_mode: host
     container_name: mariadb-11.4
-
-networks:
-  oneinstack:
-    driver: bridge
-    external: false
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.88.0/24
-    name: oneinstack

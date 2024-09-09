@@ -17,9 +17,7 @@ services:
         soft: 262144
     volumes:
       - clickhouse:/var/lib/clickhouse
-    hostname: clickhouse
-    networks:
-      - oneinstack
     environment:
       - TZ=Asia/Shanghai
+    network_mode: host
     container_name: clickhouse
