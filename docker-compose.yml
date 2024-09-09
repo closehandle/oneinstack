@@ -37,6 +37,6 @@ services:
       - mariadb-11.4:/var/lib/mysql
     environment:
       - TZ=Asia/Shanghai
-      - MARIADB_RANDOM_ROOT_PASSWORD=yes
+      - MARIADB_ROOT_PASSWORD=oneinstack
     network_mode: host
     container_name: mariadb-11.4
