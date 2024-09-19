@@ -5,6 +5,7 @@
         "8.8.4.4",
         "8.8.8.8"
     ],
+    "bridge": "none",
     "iptables": false,
     "ip6tables": false
 }
