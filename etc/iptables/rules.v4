@@ -15,7 +15,9 @@
 -A INPUT -p icmp -j ACCEPT
 -A INPUT -j REJECT
 -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A FORWARD -d 172.17.0.0/16 -m state --state NEW -j ACCEPT
 -A FORWARD -s 172.17.0.0/16 -m state --state NEW -j ACCEPT
+-A FORWARD -d 192.168.88.0/24 -m state --state NEW -j ACCEPT
 -A FORWARD -s 192.168.88.0/24 -m state --state NEW -j ACCEPT
 -A FORWARD -j REJECT
 COMMIT
