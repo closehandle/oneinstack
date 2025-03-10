@@ -1,6 +1,6 @@
 services:
   php-8.2-fpm:
-    image: closehandle/php:8.2-fpm
+    image: closehandle/php-fpm:8.2
     restart: always
     volumes:
       - /data/wwwroot:/data/wwwroot

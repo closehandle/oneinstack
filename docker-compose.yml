@@ -12,13 +12,13 @@ services:
       - /data/wwwlogs:/data/wwwlogs
       - /data/wwwroot:/data/wwwroot
     depends_on:
-      - php-8.3-fpm
+      - php-8.4-fpm
     environment:
       - TZ=Asia/Shanghai
     network_mode: host
     container_name: nginx
-  php-8.3-fpm:
-    image: closehandle/php:8.3-fpm
+  php-8.4-fpm:
+    image: closehandle/php-fpm:8.4
     restart: always
     volumes:
       - /data/wwwroot:/data/wwwroot
@@ -29,7 +29,7 @@ services:
       - FPM_BIND=127.0.0.1
       - FPM_PORT=9000
     network_mode: host
-    container_name: php-8.3-fpm
+    container_name: php-8.4-fpm
   mariadb-11.4:
     image: mariadb:11.4
     restart: always
