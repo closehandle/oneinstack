@@ -49,7 +49,7 @@ cat > /etc/logrotate.d/nginx << EOF
     notifempty
     sharedscripts
     postrotate
-        docker container restart nginx
+        docker container exec nginx nginx -s reopen
     endscript
 }
 EOF
