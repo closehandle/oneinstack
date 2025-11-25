@@ -1,0 +1,12 @@
+services:
+  php-8.4-fpm:
+    image: closehandle/php-fpm:8.4
+    restart: always
+    volumes:
+      - /data/wwwroot:/data/wwwroot
+    environment:
+      - TZ=Asia/Shanghai
+      - FPM_BIND=127.0.0.1
+      - FPM_PORT=9000
+    network_mode: host
+    container_name: php-8.4-fpm

@@ -1,0 +1,8 @@
+services:
+  redis-8.4:
+    image: redis:8.4
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    network_mode: host
+    container_name: redis-8.4

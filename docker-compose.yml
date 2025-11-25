@@ -1,7 +1,7 @@
 volumes:
-  mariadb-11.4:
+  mariadb-11.8:
     external: false
-    name: mariadb-11.4
+    name: mariadb-11.8
 
 services:
   nginx:
@@ -12,31 +12,31 @@ services:
       - /data/wwwlogs:/data/wwwlogs
       - /data/wwwroot:/data/wwwroot
     depends_on:
-      - php-8.4-fpm
+      - php-8.5-fpm
     environment:
       - TZ=Asia/Shanghai
     network_mode: host
     container_name: nginx
-  php-8.4-fpm:
-    image: closehandle/php-fpm:8.4
+  php-8.5-fpm:
+    image: closehandle/php-fpm:8.5
     restart: always
     volumes:
       - /data/wwwroot:/data/wwwroot
     depends_on:
-      - mariadb-11.4
+      - mariadb-11.8
     environment:
       - TZ=Asia/Shanghai
       - FPM_BIND=127.0.0.1
       - FPM_PORT=9000
     network_mode: host
-    container_name: php-8.4-fpm
-  mariadb-11.4:
-    image: mariadb:11.4
+    container_name: php-8.5-fpm
+  mariadb-11.8:
+    image: mariadb:11.8
     restart: always
     volumes:
-      - mariadb-11.4:/var/lib/mysql
+      - mariadb-11.8:/var/lib/mysql
     environment:
       - TZ=Asia/Shanghai
       - MARIADB_ROOT_PASSWORD=oneinstack
     network_mode: host
-    container_name: mariadb-11.4
+    container_name: mariadb-11.8

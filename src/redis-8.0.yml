@@ -1,8 +1,8 @@
 services:
-  redis-7.2:
-    image: redis:7.2
+  redis-8.0:
+    image: redis:8.0
     restart: always
     environment:
       - TZ=Asia/Shanghai
     network_mode: host
-    container_name: redis-7.2
+    container_name: redis-8.0

@@ -1,17 +1,17 @@
 volumes:
-  mongodb-6.0:
+  mongodb-8.0:
     external: false
-    name: mongodb-6.0
+    name: mongodb-8.0
 
 services:
-  mongodb-6.0:
-    image: mongo:6.0
+  mongodb-8.0:
+    image: mongo:8.0
     restart: always
     volumes:
-      - mongodb-6.0:/data/db
+      - mongodb-8.0:/data/db
     environment:
       - TZ=Asia/Shanghai
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=oneinstack
     network_mode: host
-    container_name: mongodb-6.0
+    container_name: mongodb-8.0

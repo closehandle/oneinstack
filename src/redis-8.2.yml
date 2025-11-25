@@ -1,8 +1,8 @@
 services:
-  redis-6.2:
-    image: redis:6.2
+  redis-8.2:
+    image: redis:8.2
     restart: always
     environment:
       - TZ=Asia/Shanghai
     network_mode: host
-    container_name: redis-6.2
+    container_name: redis-8.2

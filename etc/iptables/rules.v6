@@ -8,8 +8,6 @@
 -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
 -A INPUT -p udp -m udp --dport 443 -j ACCEPT
--A INPUT -p udp -m udp --dport 546 -j ACCEPT
--A INPUT -p udp -m udp --dport 547 -j ACCEPT
 -A INPUT -p ipv6-icmp -j ACCEPT
 -A INPUT -j REJECT
 -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
