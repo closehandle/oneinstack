@@ -6,6 +6,9 @@ volumes:
 services:
   nginx:
     image: nginx:latest
+    cap_add:
+      - BPF
+      - NET_ADMIN
     restart: always
     volumes:
       - /etc/nginx:/etc/nginx
