@@ -1,16 +1,15 @@
 services:
   nginx:
     image: openresty/openresty:latest
-    ports:
-      - 80/tcp
-      - 443/tcp
-      - 443/udp
+    cap_add:
+      - BPF
+      - NET_ADMIN
+    command: openresty -c /etc/nginx/nginx.conf -g 'deamon off;'
     restart: always
     volumes:
       - /etc/nginx:/etc/nginx
       - /data/wwwlogs:/data/wwwlogs
       - /data/wwwroot:/data/wwwroot
-    command: openresty -c /etc/nginx/nginx.conf -g 'deamon off;'
     environment:
       - TZ=Asia/Shanghai
     network_mode: host
