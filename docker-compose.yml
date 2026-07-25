@@ -9,6 +9,7 @@ services:
     cap_add:
       - BPF
       - NET_ADMIN
+      - SYS_ADMIN
     restart: always
     volumes:
       - /etc/nginx:/etc/nginx
